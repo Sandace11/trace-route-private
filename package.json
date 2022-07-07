@@ -1,0 +1,17 @@
+{
+  "name": "traceroute_api",
+  "version": "1.0.0",
+  "description": "Returns group of coordinates of tracert command when provided with URL or IP address",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sandesh Ghimire",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "request": "^2.88.2"
+  },
+  "type": "module"
+}
