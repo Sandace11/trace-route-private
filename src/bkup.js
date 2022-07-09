@@ -14,3 +14,32 @@ ChildProcess.exec(`tracert ${address}`, (err, stdout, stderr) => {
         cmdError
     });
 });
+
+// Copilot 
+console.log(data);
+if (data.error) {
+    return alert(data.error);
+}
+const map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 4,
+    center: {
+        lat: data.coords[0].lat,
+        lng: data.coords[0].lng
+    }
+});
+const marker = new google.maps.Marker({
+    position: {
+        lat: data.coords[0].lat,
+        lng: data.coords[0].lng
+    },
+    map: map
+});
+data.coords.forEach(coord => {
+    const marker = new google.maps.Marker({
+        position: {
+            lat: coord.lat,
+            lng: coord.lng
+        },
+        map: map
+    });
+});

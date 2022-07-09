@@ -1,5 +1,5 @@
-import request from 'request';
-import dotenv from 'dotenv';
+const request = require('request');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -26,7 +26,8 @@ const toCoords = function (ips, callback) {
     })
 }
 
-export default toCoords;
+// export default toCoords;
+module.exports = toCoords;
 
 // toCoords([
 //     '2400:1a00:b050:48a6::1',

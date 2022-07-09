@@ -1,4 +1,4 @@
-import ChildProcess from 'child_process';
+const ChildProcess = require('child_process')
 
 const traceRoute = function (address, callback) {
     ChildProcess.exec(`tracert -w 100 -h 15 ${address}`, (err, stdout, stderr) => {
@@ -25,7 +25,8 @@ const traceRoute = function (address, callback) {
     });
 }
 
-export default traceRoute;
+module.exports = traceRoute;
+// export default traceRoute;
 
 // traceRoute("worldlink.com.np", (error, ips) => {
 //     if (error) {

@@ -1,16 +1,11 @@
-import express from 'express';
-import path from 'path';
+const express = require('express')
+const path = require('path');
 
-import traceRoute from './traceRoute.js';
-import toCoords from './toCoords.js';
+const traceRoute = require('./traceRoute');
+const toCoords = require('./toCoords');
 
 const app = express();
 const port = process.env.port || 3000;
-
-
-import * as url from 'url';
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const publicFolder = path.join(__dirname, '../public');
 
@@ -41,6 +36,7 @@ app.get("/trace", (req, res) => {
                 })
             }
 
+            console.log(coords);
             res.status(200).send({
                 ips: ips,
                 coords: coords
