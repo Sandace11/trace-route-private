@@ -13,9 +13,14 @@ const toCoords = function (ips, callback) {
         request({ url: URL, json: true }, (error, response) => {
             if (error) {
                 console.log(error);
-                callback("Unable to convert ip to coordinates", undefined);
+                callback({
+                    errorMessage: "Unable to connect to ipinfo.io",
+                    error: error
+                }, undefined);
             } else if (response.body.error) {
-                callback(response.body.error, undefined);
+                callback({
+                    errorMessage: response.body.error,
+                }, undefined);
             } else {
                 coords.push(response.body.loc);
                 if (coords.length === ips.length) {
@@ -26,7 +31,6 @@ const toCoords = function (ips, callback) {
     })
 }
 
-// export default toCoords;
 module.exports = toCoords;
 
 // toCoords([

@@ -1,8 +1,8 @@
 const express = require('express')
 const path = require('path');
 
-const traceRoute = require('./traceRoute');
-const toCoords = require('./toCoords');
+const traceRoute = require('./utils/traceRoute');
+const toCoords = require('./utils/toCoords');
 
 const app = express();
 const port = process.env.port || 3000;
@@ -24,6 +24,7 @@ app.get("/trace", (req, res) => {
 
     traceRoute(req.query.address, (error, ips) => {
         if (error) {
+            console.log(error);
             return res.status(500).send({
                 error: error
             })
@@ -36,7 +37,6 @@ app.get("/trace", (req, res) => {
                 })
             }
 
-            console.log(coords);
             res.status(200).send({
                 ips: ips,
                 coords: coords

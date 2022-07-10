@@ -33,24 +33,36 @@ h1 {
 
 header nav a {
     color: #888888;
+    padding: 6px 8px;
     margin-right: 16px;
     text-decoration: none;
 }
 
 header nav a:hover {
     color:  #333333;
+    background-color: #f0f0f0;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
 }
 
-.jc-image {
-    width: 250px;
-}
-
+/* add gradient color to button on hover */
 button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8.5px;
+    margin-left: 8px;
+    text-align: center;
+    display: inline-block;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
     cursor: pointer;
-    border: 1px solid #cccccc;
-    background: #cccccc;
-    padding: 8px;
 }
+
+button:hover {
+    background-color: rgb(70, 131, 73);
+}
+
 
 input {
     border: 1px solid #cccccc;
@@ -58,8 +70,5 @@ input {
     padding: 8px;
 }
 
-#message1, #message2 {
-    color: #888888;
-}
 
 
