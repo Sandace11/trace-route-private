@@ -1,13 +1,27 @@
+html {
+    height: 100%;
+}
+
 body {
+    height: 100%;
     color: #333333;
     font-family: Arial, Helvetica, sans-serif;
-    max-width: 650px;
+    max-width: 60%;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 16px; 
 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+#map {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: 24px;
+    bottom: 0;
+
 }
 
 .main-content {
@@ -22,8 +36,8 @@ footer {
 }
 
 header {
-    margin-top: 16px;
-    margin-bottom: 48px;
+    margin-top: 8px;
+    margin-bottom: 24px;
 }
 
 h1 {
