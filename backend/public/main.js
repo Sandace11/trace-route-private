@@ -38,9 +38,9 @@ function init() {
 
     map.addLayer(baseLayerGroup);
 
-    const myStyle = new ol.style.Style({
+    const currentStyle = new ol.style.Style({
         stroke: new ol.style.Stroke({
-            color: 'rgba(255, 0, 0, 1)',
+            color: 'rgba(0, 255, 0, 1)',
             width: 2
         }),
         image: new ol.style.Icon({
@@ -52,49 +52,92 @@ function init() {
         })
     });
 
-    // // Pins in locations
-    // locations.forEach((location) => {
-    //     const [lat, long] = location.split(',');
-    //     iconFeatures.push(new ol.Feature({
-    //         geometry: new ol.geom.Point(ol.proj.fromLonLat([long, lat]))
-    //     }))
-    // })
-
-    // iconFeatures.forEach(function (feature) { feature.setStyle(myStyle) });
-
-    // const vectorLayer = new ol.layer.Vector({
-    //     source: new ol.source.Vector({
-    //         features: iconFeatures
-    //     })
-    // });
-
-    // map.addLayer(vectorLayer);
+    const initialStyle = new ol.style.Style({
+        stroke: new ol.style.Stroke({
+            color: 'rgba(0, 255, 0, 0.5)',
+            width: 2
+        }),
+        image: new ol.style.Icon({
+            anchor: [0.34375, 1],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'fraction',
+            scale: 0.4,
+            opacity: 0.2,
+            src: './img/pin7.png',
+        })
+    });
 
 
-    // // Lines between locations
-    // locations.forEach((location, index) => {
-    //     if (index === locations.length - 1) return;
 
-    //     const [lat1, long1] = location.split(',');
-    //     const [lat2, long2] = locations[index + 1].split(',');
+    // ----------------------------------------TESTING----------------------------------------
 
-    //     lineFeatures.push(new ol.Feature({
-    //         geometry: new ol.geom.LineString([
-    //             ol.proj.fromLonLat([long1, lat1]),
-    //             ol.proj.fromLonLat([long2, lat2])
-    //         ])
-    //     }))
-    // })
+    // Pins in locations
+    locations.forEach((location) => {
+        if (!location) return;
+        const [lat, long] = location.split(',');
 
-    // lineFeatures.forEach(function (feature) { feature.setStyle(myStyle) });
+        iconFeatures.push(new ol.Feature({
+            geometry: new ol.geom.Point(ol.proj.fromLonLat([long, lat]))
+        }))
+    })
 
-    // const lineLayer = new ol.layer.Vector({
-    //     source: new ol.source.Vector({
-    //         features: lineFeatures
-    //     })
-    // });
+    // Lines between locations
+    locations.forEach((location, index) => {
+        if (!location || index === locations.length - 1) return;
+        const [lat1, long1] = location.split(',');
+        const [lat2, long2] = locations[index + 1].split(',');
 
-    // map.addLayer(lineLayer);
+        lineFeatures.push(new ol.Feature({
+            geometry: new ol.geom.LineString([
+                ol.proj.fromLonLat([long1, lat1]),
+                ol.proj.fromLonLat([long2, lat2])
+            ])
+        }))
+    })
+
+    iconFeatures.forEach(function (feature) { feature.setStyle(initialStyle) });
+    lineFeatures.forEach(function (feature) { feature.setStyle(initialStyle) });
+
+    const iconVectorSource = new ol.source.Vector();
+    const lineVectorSource = new ol.source.Vector();
+
+    const iconVectorLayer = new ol.layer.Vector();
+    const lineVectorLayer = new ol.layer.Vector();
+
+    let timeOfIteration = iconFeatures.length > lineFeatures.length ? iconFeatures.length : lineFeatures.length;
+    let count = 0;
+    let loop = setInterval(() => {
+        if (count > timeOfIteration - 2) {
+            console.log(iconFeatures);
+            clearInterval(loop)
+        };
+        map.removeLayer(iconVectorLayer);
+        map.removeLayer(lineVectorLayer);
+
+        iconVectorSource.clear();
+        lineVectorSource.clear();
+
+        iconFeatures.slice(0, count + 1).forEach(function (feature) { feature.setStyle(initialStyle) });
+        lineFeatures.slice(0, count + 1).forEach(function (feature) { feature.setStyle(initialStyle) });
+
+        iconFeatures[count].setStyle(currentStyle);
+        lineFeatures[count - 1 > 0 ? count - 1 : 0].setStyle(currentStyle);
+        console.log(count);
+
+        iconVectorSource.addFeatures(iconFeatures.slice(0, count + 1));
+        lineVectorSource.addFeatures(lineFeatures.slice(0, count));
+
+        iconVectorLayer.setSource(iconVectorSource);
+        lineVectorLayer.setSource(lineVectorSource);
+
+        map.addLayer(iconVectorLayer);
+        map.addLayer(lineVectorLayer);
+
+        count++;
+    }, 500)
+
+
+    // ----------------------------------------TESTING_END----------------------------------------
 
     const form = document.querySelector('form');
 
@@ -116,27 +159,18 @@ function init() {
                     console.log(data);
 
                     // Pins in locations
-                    data.coords.forEach((location) => {
+                    data.coords.forEach((location, index) => {
+                        if (!location || index === locations.length - 1) return;
                         const [lat, long] = location.split(',');
+
                         iconFeatures.push(new ol.Feature({
                             geometry: new ol.geom.Point(ol.proj.fromLonLat([long, lat]))
                         }))
                     })
 
-                    iconFeatures.forEach(function (feature) { feature.setStyle(myStyle) });
-
-                    const vectorLayer = new ol.layer.Vector({
-                        source: new ol.source.Vector({
-                            features: iconFeatures
-                        })
-                    });
-
-                    map.addLayer(vectorLayer);
-
                     // Lines between locations
                     data.coords.forEach((location, index) => {
                         if (!location || index === locations.length - 1) return;
-
                         const [lat1, long1] = location.split(',');
                         const [lat2, long2] = locations[index + 1].split(',');
 
@@ -148,7 +182,14 @@ function init() {
                         }))
                     })
 
-                    lineFeatures.forEach(function (feature) { feature.setStyle(myStyle) });
+                    iconFeatures.forEach(function (feature) { feature.setStyle(initialStyle) });
+                    lineFeatures.forEach(function (feature) { feature.setStyle(initialStyle) });
+
+                    const vectorLayer = new ol.layer.Vector({
+                        source: new ol.source.Vector({
+                            features: iconFeatures
+                        })
+                    });
 
                     const lineLayer = new ol.layer.Vector({
                         source: new ol.source.Vector({
@@ -156,6 +197,7 @@ function init() {
                         })
                     });
 
+                    map.addLayer(vectorLayer);
                     map.addLayer(lineLayer);
                 }
             })
