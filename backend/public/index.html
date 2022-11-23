@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./img/pin_.png" />
     <title>TraceRoute</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./lib/v7.1.0-package/ol.css">
 </head>
@@ -14,7 +18,7 @@
     <header>
         <h1>Trace Route</h1>
         <nav>
-            <a href="#">Trace</a>
+            <a href="#">Version_1</a>
         </nav>
     </header>
 
@@ -22,17 +26,37 @@
         <form>
             <input placeholder="Enter URL here">
             <button id="button">Trace</button>
-            <div id="ripple" class="">
-                <div></div>
-                <div></div>
+            <div class="info-box">
+                <div id="ripple" class="">
+                    <div></div>
+                    <div></div>
+                </div>
+                <p id="info"></p>
             </div>
-            <p id="info"></p>
         </form>
     </div>
     <div id="map" class="map"></div>
 
     <footer>
-        <p>Ghimire</p>
+        <div class="footer">
+            <div class="row">
+                <a href="https://github.com/Sandace11/"><i class="fa fa-github"></i></a>
+                <a href="https://sandesh-ghimire.com.np/"><i class="fa fa-user"></i></a>
+                <a href="https://twitter.com/sandace11"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.deviantart.com/sandace11"><i class="fa fa-deviantart"></i></a>
+                <a href="https://www.facebook.com/sandace11/"><i class="fa fa-facebook"></i></a>
+            </div>
+
+            <div class="row">
+                <a href="https://sandesh-ghimire.com.np/">
+                    <b>Sandesh Ghimire</b>
+                </a>
+                .
+                <a href="https://openstreetmap.org/">
+                    OpenStreetMap
+                </a>
+            </div>
+        </div>
     </footer>
 
     <script src="./main.js"></script>

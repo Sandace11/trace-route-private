@@ -33,3 +33,36 @@ const humanitarianTile = new ol.layer.Tile({
         title: 'Point',
         style: myStyle
     });
+
+
+                            // // Pins in locations
+                        // data.coords.forEach((location, index) => {
+                        //     if (!location) {
+                        //         const [lat, long] = data.coords[index - 1].split(',');
+                        //         return;
+                        //     }
+                        //     const [lat, long] = location.split(',');
+
+                        //     iconFeatures.push(new ol.Feature({
+                        //         geometry: new ol.geom.Point(ol.proj.fromLonLat([long, lat]))
+                        //     }))
+                        // })
+
+                        // // Lines between locations
+                        // data.coords.forEach((location, index) => {
+                        //     if (!location) {
+                        //         const [lat1, long1] = data.coords[index - 1].split(',');
+                        //         [lat2, long2] = [lat1, long1];
+                        //         return;
+                        //     }
+                        //     if (index === data.coords.length - 1) return;
+                        //     const [lat1, long1] = location.split(',');
+                        //     const [lat2, long2] = data.coords[index + 1].split(',');
+
+                        //     lineFeatures.push(new ol.Feature({
+                        //         geometry: new ol.geom.LineString([
+                        //             ol.proj.fromLonLat([long1, lat1]),
+                        //             ol.proj.fromLonLat([long2, lat2])
+                        //         ])
+                        //     }))
+                        // })

@@ -10,7 +10,7 @@ html {
 body {
     height: 100%;
     color: #333333;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Inter ,Helvetica, sans-serif;
     max-width: 60%;
     margin: 0 auto;
     padding: 0 16px; 
@@ -41,16 +41,18 @@ footer {
 }
 
 header {
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-top: 28px;
+    margin-bottom: 18px;
 }
 
 h1 {
-    font-size: 64px;
-    margin-bottom: 16px;
+    font-weight: bold;
+    font-size: 48px;
+    margin-bottom: 12px;
 }
 
 header nav a {
+    font-size: 14px;
     color: #888888;
     padding: 6px 8px;
     margin-right: 16px;
@@ -65,16 +67,14 @@ header nav a:hover {
 }
 
 form {
-    /* distribute along the row */
     display: flex;
     flex-direction: row;
 }
 
 form p {
     font-size: 14px;
-    margin: auto 4px;
+    margin: auto 0;
     color: #888888;
-    padding: 0 10px;
     text-anchor: middle;
 }
 
@@ -83,7 +83,7 @@ button {
     border: none;
     color: white;
     padding: 8.5px;
-    margin-left: 8px;
+    margin: auto 12px;
     text-align: center;
     display: inline-block;
     -webkit-transition-duration: 0.4s;
@@ -91,7 +91,6 @@ button {
     cursor: pointer;
 } 
 
-/* Animate color on button hover */
 button:hover {
     background-color: #333333;
     color: white;
@@ -108,10 +107,38 @@ input {
     padding: 8px;
 }
 
+.info-box {
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 650px) {
+    form {
+        display: block;
+    }
+
+    form p {
+        font-size: 14px;
+        margin: auto 0;
+        color: #888888;
+        padding: 0 0;
+        text-anchor: middle;
+    }
+
+    button {
+        margin: 16px 0;
+        padding: auto 0;
+    }
+
+    input {
+        margin-right: 8px;
+    }
+}
+
 .lds-ripple {
-    margin-left: 12px;
     display: inline-block;
     position: relative;
+    margin-right: 8px;
     width: 32px;
     height: 32px;
   }
@@ -155,3 +182,58 @@ input {
       opacity: 0;
     }
   }
+
+.footer{
+    page-break-before: always;
+    /* background:rgb(255, 255, 255); */
+    /* padding: 8px 0px; */
+    font-family: 'Play', sans-serif;
+    text-align:center;
+    }
+    
+    .footer .row{
+    width:100%;
+    margin:1% 0%;
+    padding:0.6% 0%;
+    color:gray;
+    font-size:0.8em;
+    }
+    
+    .footer .row a{
+    text-decoration:none;
+    color:gray;
+    transition:0.5s;
+    }
+    
+    .footer .row a:hover{
+    color:#353535;
+    }
+    
+    .footer .row ul{
+    width:100%;
+    }
+    
+    .footer .row ul li{
+    display:inline-block;
+    margin:0px 30px;
+    }
+    
+    .footer .row a i{
+    font-size:2em;
+    margin:0% 1%;
+    }
+    
+    @media (max-width:720px){
+    .footer{
+    text-align:left;
+    /* padding:5%; */
+    }
+    .footer .row ul li{
+    display:block;
+    margin:10px 0px;
+    text-align:left;
+    }
+    .footer .row a i{
+    margin:0% 3%;
+    }
+    }
