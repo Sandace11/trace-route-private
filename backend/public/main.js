@@ -1,37 +1,9 @@
 window.onload = init;
 
 // try using Leaflet
+// Create log files and let user send them to dev for debugging
 let iconFeatures = new Array();
 let lineFeatures = new Array();
-
-// const data = {
-//     coords: [
-//         "39.0437,-77.4875",
-//         "27.6766,85.3142",
-//         "27.7017,85.3206",
-//         "39.0437,-77.4875",
-//         "33.9728,-118.4276",
-//         "33.9728,-118.4276",
-//         null,
-//         "22.3302,114.1595",
-//         "22.3302,114.1595",
-//         "28.4601,77.0263",
-//         "27.6766,85.3142"
-//     ],
-//     ips: [
-//         "2400:1a00:b050:48a6::1",
-//         "2400:1a00:b1a5::229",
-//         "2400:1a00:0:1::228",
-//         "2404:d180:1:212::201",
-//         "2001:5a0:2300:200::b9",
-//         "2001:5a0:2300:200::b5",
-//         "2404:6800:8110::1",
-//         "2001:4860:0:1::4fe8",
-//         "2001:4860:0:1::269f",
-//         "2404:6800:4009:82c::2004",
-//         "2400:1a00:b050:48a6::1"
-//     ]
-// }
 
 function init() {
     const map = new ol.Map({
@@ -84,7 +56,6 @@ function init() {
         })
     });
 
-
     const form = document.querySelector('form');
     const input = document.querySelector('input');
     const button = document.querySelector('button');
@@ -115,7 +86,6 @@ function init() {
                         button.disabled = false;
                         return console.log(data);
                     } else {
-                        // console.log(data);
                         data.coords.forEach((location, index) => {
                             if (!location) {
                                 data.coords[index] = data.coords[index - 1];
