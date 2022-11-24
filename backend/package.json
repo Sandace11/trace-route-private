@@ -4,7 +4,6 @@
   "description": "Returns group of coordinates of tracert command when provided with URL or IP address",
   "main": "src/app.js",
   "scripts": {
-    "parcel": "parcel serve public/index.html",
     "dev": "nodemon src/app.js",
     "start": "node src/app.js"
   },
@@ -12,9 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "ol": "^6.15.1",
-    "request": "^2.88.2"
+    "express": "^4.18.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
