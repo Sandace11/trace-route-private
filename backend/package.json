@@ -10,8 +10,8 @@
   "author": "Sandesh Ghimire",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
